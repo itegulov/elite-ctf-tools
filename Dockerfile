@@ -33,5 +33,6 @@ RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ENV EDITOR vim
 
 RUN pacaur -S radare2-git --noconfirm --noedit
+RUN pacaur -S openssh --noconfirm --noedit
 
 CMD zsh -i
