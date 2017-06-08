@@ -11,7 +11,7 @@ RUN chsh -s /usr/bin/zsh ctf
 # Install pacaur
 RUN pacman -S binutils pkg-config make gcc fakeroot --noconfirm --needed
 RUN pacman -S expac perl yajl git --noconfirm --needed
-RUN pacman -S patch awk vim --noconfirm --needed
+RUN pacman -S wget awk patch vim --noconfirm --needed
 
 ENV PATH /usr/bin/core_perl/:$PATH
 
@@ -25,6 +25,10 @@ RUN makepkg PKGBUILD --noconfirm --install --needed
 
 WORKDIR /home/ctf
 RUN rm -rf /home/ctf/pacaur_install
+
+RUN sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 ENV EDITOR vim
 
